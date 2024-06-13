@@ -1,10 +1,11 @@
 export interface AccountInterface {
-    id?: string;
+    id: string;
     email: string;
     firstName: string;
     lastName: string;
     active: boolean;
     dateOfBirth: Date;
+    
   }
 
   // export interface Products {
