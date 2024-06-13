@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { AccountFirebaseService } from '../services/account-firebase.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,13 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  accountFirebaseService = inject(AccountFirebaseService);
 
+  ngOnInit() {
+    this.accountFirebaseService.getProducts().subscribe((accounts) => {
+      console.log(accounts)
+      // this.acc = products;
+    })
+  }
 }
