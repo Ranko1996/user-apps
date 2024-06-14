@@ -12,7 +12,7 @@ export class AccountFirebaseService {
   firestore = inject(Firestore)
   productsCollection = collection(this.firestore, 'account')
 
-  getProducts(): Observable<AccountInterface[]> {
+  getUser(): Observable<AccountInterface[]> {
     return collectionData(this.productsCollection, {
         idField: 'id',
     }) as Observable<AccountInterface[]>;
