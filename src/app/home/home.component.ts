@@ -11,6 +11,7 @@ import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
+import { ApplicationsFirebaseService } from '../services/applications-firebase';
 
 @Component({
   selector: 'app-home',
@@ -34,14 +35,18 @@ export class HomeComponent implements OnInit {
     this.endDate = today;
   }
   accountFirebaseService = inject(AccountFirebaseService);
+  appsFirebaseService = inject(ApplicationsFirebaseService);
   messageService = inject(MessageService);
   
 
   ngOnInit() {
+    this.appsFirebaseService.getApplications().subscribe((apps) => {
+      console.log(apps);
+    })
     this.accountFirebaseService.getApps("HnCDoLiMjVVGmxcEMR5V").subscribe((apps) => {
       // Handle apps
     });
-
+    
     this.accountFirebaseService.getUser().subscribe((accounts) => {
       this.users = accounts.map(user => ({
         ...user,

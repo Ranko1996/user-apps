@@ -1,0 +1,78 @@
+<p-dialog
+  [header]="header"
+  [(visible)]="display"
+  [modal]="true"
+  [closable]="false"
+>
+  <form #productForm="ngForm" (ngSubmit)="onConfirm()">
+    <div class="column gap-1 form-wrapper">
+      <!-- Name -->
+      <div class="row gap-05">
+        <span class="price-label">Name:</span>
+        <input
+          type="text"
+          [(ngModel)]="application.name"
+          name="name"
+          #name="ngModel"
+          required
+          maxlength="32"
+        />
+        <div *ngIf="name.invalid && (name.dirty || name.touched)">
+          <div *ngIf="name.errors?.['required']">Name is required.</div>
+          <div *ngIf="name.errors?.['maxlength']">Name cannot be longer than 32 characters.</div>
+        </div>
+      </div>
+
+      <div class="row gap-05">
+        <span class="price-label">Version:</span>
+        <input
+          type="text"
+          [(ngModel)]="application.version"
+          name="description"
+          #description="ngModel"
+          required
+          maxlength="160"
+        />
+        <div *ngIf="description.invalid && (description.dirty || description.touched)">
+          <div *ngIf="description.errors?.['required']">Description is required.</div>
+          <div *ngIf="description.errors?.['maxlength']">Description cannot be longer than 160 characters.</div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="row gap-05">
+        <span class="price-label">Url:</span>
+        <input
+          type="text"
+          [(ngModel)]="application.url"
+          name="description"
+          #description="ngModel"
+          required
+          maxlength="160"
+        />
+        <div *ngIf="description.invalid && (description.dirty || description.touched)">
+          <div *ngIf="description.errors?.['required']">Description is required.</div>
+          <div *ngIf="description.errors?.['maxlength']">Description cannot be longer than 160 characters.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer with action buttons -->
+    <p-footer>
+      <button
+        type="submit"
+        pButton
+        icon="pi pi-check"
+        [disabled]="productForm.invalid"
+        label="Confirm"
+      ></button>
+      <button
+        type="button"
+        pButton
+        icon="pi pi-times"
+        (click)="onCancel()"
+        label="Cancel"
+      ></button>
+    </p-footer>
+  </form>
+</p-dialog>

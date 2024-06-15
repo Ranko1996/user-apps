@@ -1,0 +1,82 @@
+<div class="card">
+    <p-toast></p-toast>
+ 
+    <button
+        class="mb-25"
+        type="button"
+        pButton
+        icon="pi pi-plus"
+        (click)="toggleAddPopup()"
+        label="Add Product"
+    ></button>
+    <p-table [value]="apps" dataKey="id" editMode="row" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>URL</th>
+                <th>Version</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <th>
+                    <p-columnFilter type="text" field="name" [showClearButton]="false" />
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="url" [showClearButton]="false" />
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="version" [showClearButton]="false" />
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-app let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="app">
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="app.name" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ app.name }}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="app.url" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ app.url }}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="app.version" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ app.version }}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <div class="flex align-items-center justify-content-center gap-2">
+                        <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(app)" class="p-button-rounded p-button-text"></button>
+                        <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-trash" (click)="onRowDelete(app, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+                        <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(app)" class="p-button-rounded p-button-text p-button-success mr-2"></button>
+                        <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(app, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<app-edit-popup
+    [(display)]="displayAddPopup"
+    (confirm)="onConfirmAdd($event)"
+    header="Add Product"
+></app-edit-popup>
+
+

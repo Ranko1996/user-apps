@@ -54,45 +54,4 @@ export class AccountFirebaseService {
     return from(promise);
   }
 
- 
-
-
-  // addProduct(text: string): Observable<string> {
-  //   const productToCreate = {name: text, price: 12, image: "", description: ""}
-  //   const promise = addDoc(this.productsCollection, productToCreate).then((response) => response.id);
-  //   return from(promise);
-  // }
-
-  // addProduct(name: string, price: number, image: string, description: string): Observable<string> {
-  //   const productToCreate = {name, price, image, description};
-  //   const promise = addDoc(this.productsCollection, productToCreate).then((response) => response.id);
-  //   return from(promise);
-  // }
-
-  // removeProduct(productId: string): Observable<void> {
-  //   const docRef = doc(this.firestore, 'products/' + productId);
-  //   const promise = deleteDoc(docRef);
-  //   return from(promise);
-  // }
-
-  // editProduct(productId: string, name: string, price: number, image: string, description: string): Observable<void> {
-  //   const docRef = doc(this.firestore, 'products/' + productId);
-  //   const productToUpdate = {name, price, image, description};
-  //   const promise = updateDoc(docRef, productToUpdate);
-  //   return from(promise);
-  // }
-  
-  // getProductById(productId: string): Observable<ProductInterface | undefined> {
-  //   const docRef = doc(this.firestore, 'products/' + productId);
-  //   const promise = getDoc(docRef).then(docSnapshot => {
-  //     if (docSnapshot.exists()) {
-  //       return { id: docSnapshot.id, ...docSnapshot.data() } as ProductInterface;
-  //     } else {
-  //       return undefined;
-  //     }
-  //   });
-  //   return from(promise);
-  // }
-
-  // constructor() { }
 }
