@@ -4,6 +4,6 @@ export interface AccountInterface {
     firstName: string;
     lastName: string;
     active: boolean;
-    dateOfBirth: Date;
+    dateOfBirth: any;
     
   }

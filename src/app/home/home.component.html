@@ -3,17 +3,36 @@
     <p-table [value]="users" dataKey="id" editMode="row" [tableStyle]="{'min-width': '50rem'}">
         <ng-template pTemplate="header">
             <tr>
-                <th>ID</th>
+                <!-- <th>ID</th> -->
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Active</th>
+                <th>Date of Birth</th>
                 <th>Actions</th>
+            </tr>
+            <tr>
+                <th>
+                    <p-columnFilter type="text" field="firstName" [showClearButton]="false" />
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="lastName" [showClearButton]="false" />
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="email" [showClearButton]="false" />
+                </th>
+                <th>
+                    <p-columnFilter type="boolean" field="active" [showClearButton]="false" />
+                </th>
+               
+                <th>
+                    <p-columnFilter type="text" field="dateOfBirth" [showClearButton]="false" />
+                </th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-user let-editing="editing" let-ri="rowIndex">
             <tr [pEditableRow]="user">
-                <td>{{ user.id }}</td>
+                <!-- <td>{{ user.id }}</td> -->
                 <td>
                     <p-cellEditor>
                         <ng-template pTemplate="input">
@@ -45,11 +64,41 @@
                     </p-cellEditor>
                 </td>
                 <td>
-                    <p-tag [value]="user.active ? 'Active' : 'Inactive'" [severity]="getSeverity(user.active)"></p-tag>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-dropdown 
+                                [options]="[{label: 'True', value: true}, {label: 'False', value: false}]" 
+                                appendTo="body" 
+                                [(ngModel)]="user.active" 
+                                [style]="{'width':'100%'}" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            <p-tag 
+                                [value]="user.active ? 'Active' : 'Inactive'" 
+                                [severity]="user.active ? 'success' : 'danger'" />
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-calendar 
+                                [(ngModel)]="user.dateOfBirth" 
+                                [style]="{'width':'100%'}" 
+                                appendTo="body"
+                                [showIcon]="true" 
+                                [inputStyle]="{'width':'100%'}" 
+                                [readonlyInput]="true" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ user.dateOfBirth | date }} 
+                        </ng-template>
+                    </p-cellEditor>
                 </td>
                 <td>
                     <div class="flex align-items-center justify-content-center gap-2">
                         <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(user)" class="p-button-rounded p-button-text"></button>
+                        <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-trash" (click)="onRowDelete(user, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
                         <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(user)" class="p-button-rounded p-button-text p-button-success mr-2"></button>
                         <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(user, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
                     </div>
@@ -58,3 +107,4 @@
         </ng-template>
     </p-table>
 </div>
+

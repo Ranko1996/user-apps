@@ -4,6 +4,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAXZkriKFC7JGfgID-PNrWUhxi8aAjeyYo",
@@ -19,5 +20,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), 
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
+    provideAnimations(), 
   ]
 };
