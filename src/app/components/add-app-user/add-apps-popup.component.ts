@@ -50,7 +50,8 @@ export class AddAppsPopupComponent {
       .catch((error: any) => {
         console.error('Error adding application to user:', error);
       });
-    this.applications = [];
+    // this.applications = [];
+    this.selectedApp = undefined;
     this.onCancel(); // Zatvaranje popup-a nakon dodjeljivanja aplikacija
   }
   

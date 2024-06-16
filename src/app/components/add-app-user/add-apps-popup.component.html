@@ -8,7 +8,7 @@
     <!-- Dropdown menu with applications -->
     <div class="row gap-1">
       <span class="price-label">Select Application:</span>
-      <p-dropdown [options]="applications" [(ngModel)]="selectedApp"></p-dropdown>
+      <p-dropdown [options]="applications" [(ngModel)]="selectedApp" optionLabel="name" appendTo="body"></p-dropdown>
     </div>
 
     <!-- List of selected applications -->
