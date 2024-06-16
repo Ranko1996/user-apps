@@ -1,0 +1,24 @@
+<p-dialog
+  [header]="header"
+  [(visible)]="display"
+  [modal]="true"
+  [closable]="false"
+>
+  <div class="column gap-1 form-wrapper">
+    <div *ngFor="let app of applications" class="row gap-05">
+      <span class="price-label">Name:</span>
+      <span>{{ app.name }}</span>
+    </div>
+  </div>
+
+  <!-- Footer with action buttons -->
+  <p-footer>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-times"
+      (click)="onCancel()"
+      label="Close"
+    ></button>
+  </p-footer>
+</p-dialog>
