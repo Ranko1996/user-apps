@@ -1,5 +1,9 @@
+
 <header class="wrapper row full-center">
-  <a routerLink="/">
-    <img src="assets/images/logo.png" alt="Logo image" class="logo" />
-  </a>
+  <nav class="navigation">
+    <a routerLink="/" routerLinkActive="active">Home</a>
+    <a routerLink="/users" routerLinkActive="active">Users</a>
+    <a routerLink="/apps" routerLinkActive="active">Applications</a>
+  </nav>
 </header>
+<router-outlet></router-outlet>

@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { Router, RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, ],
+  imports: [CommonModule, RouterModule ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor(
-  ) {}
+  constructor(private router: Router) {}
 
-
+  navigateTo(route: string) {
+    this.router.navigate([route]);
+  }
 
 }
