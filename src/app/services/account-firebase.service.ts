@@ -23,6 +23,12 @@ export class AccountFirebaseService {
     const promise = updateDoc(docRef, userToUpdate);
     return from(promise);
   }
+  addUser( firstName: string, lastName: string, email: string, active: boolean, dateOfBirth: Date): Observable<string> {
+    const userToCreate = {firstName, lastName, email, active, dateOfBirth};
+    console.log(userToCreate);
+    const promise = addDoc(this.productsCollection, userToCreate).then((response) => response.id);
+    return from(promise);
+  }
   
   removeUser(accountId: string): Observable<void> {
     const docRef = doc(this.firestore, 'account/' + accountId);

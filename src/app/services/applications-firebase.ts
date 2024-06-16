@@ -18,8 +18,9 @@ export class ApplicationsFirebaseService {
 
 
 
-  addApplication(name: string, url: string, version: string): Observable<string> {
-    const applicationToCreate = {name, url, version};
+  addApplication(name: string,  version: string, url: string,): Observable<string> {
+    const applicationToCreate = {name, version, url};
+    console.log(applicationToCreate);
     const promise = addDoc(this.applicationsCollection, applicationToCreate).then((response) => response.id);
     return from(promise);
   }

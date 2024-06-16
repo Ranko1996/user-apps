@@ -1,5 +1,13 @@
 <div class="card">
     <p-toast></p-toast>
+    <button
+        class="mb-25"
+        type="button"
+        pButton
+        icon="pi pi-plus"
+        (click)="toggleAddPopup()"
+        label="Add User"
+    ></button>
     <p-table [value]="users" dataKey="id" editMode="row" [tableStyle]="{'min-width': '50rem'}">
         <ng-template pTemplate="header">
             <tr>
@@ -107,4 +115,8 @@
         </ng-template>
     </p-table>
 </div>
-
+<add-user-popup
+    [(display)]="displayAddPopup"
+    (confirm)="onConfirmAdd($event)"
+    header="Add User"
+></add-user-popup>

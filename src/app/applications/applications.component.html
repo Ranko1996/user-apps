@@ -7,7 +7,7 @@
         pButton
         icon="pi pi-plus"
         (click)="toggleAddPopup()"
-        label="Add Product"
+        label="Add Application"
     ></button>
     <p-table [value]="apps" dataKey="id" editMode="row" [tableStyle]="{'min-width': '50rem'}">
         <ng-template pTemplate="header">
@@ -76,7 +76,7 @@
 <app-edit-popup
     [(display)]="displayAddPopup"
     (confirm)="onConfirmAdd($event)"
-    header="Add Product"
+    header="Add Application"
 ></app-edit-popup>
 
 

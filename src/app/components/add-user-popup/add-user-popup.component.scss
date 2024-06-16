@@ -1,0 +1,57 @@
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Povećava razmak između redova */
+  
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem; /* Povećava razmak između labela i inputa */
+    }
+  
+    .price-label {
+      width: 100px; /* Širina labela */
+      text-align: right; /* Poravnanje teksta desno */
+      padding-right: 1rem; /* Razmak između labela i inputa */
+    }
+  
+    input[type="text"],
+    input[type="number"] {
+      flex: 1; /* Inputi će zauzeti preostali prostor */
+      padding: 0.5rem; /* Unutrašnji razmak unutar inputa */
+      border: 1px solid #ccc; /* Siva ivica */
+      border-radius: 4px; /* Zaobljeni uglovi */
+      font-size: 1rem; /* Veličina fonta */
+    }
+  }
+  
+  p-footer {
+    display: flex;
+    justify-content: flex-end; /* Poravnava dugmad desno */
+    gap: 1rem; /* Razmak između dugmadi */
+    margin-top: 1rem; /* Razmak između footer-a i forme */
+  
+    button {
+      padding: 0.5rem 1rem; /* Unutrašnji razmak unutar dugmadi */
+      font-size: 1rem; /* Veličina fonta */
+      border: none; /* Uklanja defaultnu ivicu */
+      border-radius: 4px; /* Zaobljeni uglovi */
+      cursor: pointer; /* Pokazivač mijenja oblik pri prelasku preko dugmeta */
+    }
+  
+    .pi-check {
+      background-color: #4CAF50; /* Zelena boja za potvrdu */
+      color: white; /* Bijeli tekst */
+    }
+  
+    .pi-times {
+      background-color: #f44336; /* Crvena boja za otkazivanje */
+      color: white; /* Bijeli tekst */
+    }
+  
+    .pi-check:hover,
+    .pi-times:hover {
+      opacity: 0.8; /* Prozirnost pri prelasku preko dugmeta */
+    }
+  }
+  

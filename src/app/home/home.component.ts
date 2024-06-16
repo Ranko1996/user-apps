@@ -12,20 +12,22 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { ApplicationsFirebaseService } from '../services/applications-firebase';
+import { AddUserPopupComponent } from "../components/add-user-popup/add-user-popup.component";
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [TableModule, CommonModule, ToastModule, FormsModule, TagModule, InputTextModule, ButtonModule, DropdownModule, CalendarModule],
-  providers: [MessageService], 
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+    selector: 'app-home',
+    standalone: true,
+    providers: [MessageService],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss',
+    imports: [TableModule, CommonModule, ToastModule, FormsModule, TagModule, InputTextModule, ButtonModule, DropdownModule, CalendarModule, AddUserPopupComponent]
 })
 export class HomeComponent implements OnInit {
   users!: AccountInterface[];
   status!: boolean;
   startDate: Date;
   endDate: Date;
+  displayAddPopup: boolean = false;
 
   constructor() {
     const today = new Date();
@@ -55,6 +57,24 @@ export class HomeComponent implements OnInit {
       console.log(this.users);
     });
   }
+  toggleAddPopup() {
+    this.displayAddPopup = true;
+  }
+  onConfirmAdd(user: AccountInterface) {
+    this.addUser(user);
+    this.displayAddPopup = false;
+  }
+  addUser(user: AccountInterface) {
+    this.accountFirebaseService.addUser(user.firstName, user.lastName, user.email, true, user.dateOfBirth)
+      .subscribe((id) => {
+        console.log(`User added with ID: ${id}`);
+        // Dodajte novi proizvod u lokalnu listu proizvoda
+        this.users.push({ ...user, id });
+      }, error => {
+        console.error('Error adding user:', error);
+      });
+  }
+
   onRowEditInit(user: AccountInterface) {
     this.accountFirebaseService.editUser(user.id, user.firstName, user.lastName, user.email, user.active, user.dateOfBirth)
       .subscribe();
