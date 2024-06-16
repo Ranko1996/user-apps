@@ -25,6 +25,7 @@
                         type="button" 
                         pButton 
                         pRipple 
+                        (click)="onAddApplication(user.id)"
                         icon="pi pi-plus" >
                     </button>
                     <button 
@@ -46,4 +47,10 @@
     [applications]="selectedApps"
 ></display-apps-popup>
 
+<add-apps-popup
+  [header]="'Assign Applications to User'"
+  [(display)]="displayPopup"
+  [applications]="allApps"
+  [userId]="selectedId"
+></add-apps-popup>
 

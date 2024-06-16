@@ -1,0 +1,38 @@
+<p-dialog
+  [header]="header"
+  [(visible)]="display"
+  [modal]="true"
+  [closable]="false"
+>
+  <div class="column gap-1 form-wrapper">
+    <!-- Dropdown menu with applications -->
+    <div class="row gap-1">
+      <span class="price-label">Select Application:</span>
+      <p-dropdown [options]="applications" [(ngModel)]="selectedApp"></p-dropdown>
+    </div>
+
+    <!-- List of selected applications -->
+    <div *ngIf="selectedApp" class="row gap-1">
+      <span class="price-label">Selected Application:</span>
+      <span>{{ selectedApp.name }}</span>
+    </div>
+  </div>
+
+  <!-- Footer with action buttons -->
+  <p-footer>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-check"
+      (click)="assignAppsToUser()"
+      label="Assign"
+    ></button>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-times"
+      (click)="onCancel()"
+      label="Close"
+    ></button>
+  </p-footer>
+</p-dialog>
