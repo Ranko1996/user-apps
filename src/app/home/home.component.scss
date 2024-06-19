@@ -1,0 +1,59 @@
+.card {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mb-25 {
+    margin-bottom: 25px;
+  }
+  
+  /* Styling for the table */
+  p-table {
+    margin-top: 20px;
+    font-size: 14px; /* Adjust font size as needed */
+  }
+  
+  /* Styling for table header */
+  p-table thead {
+    background-color: #f0f0f0; /* Light gray background */
+  }
+  
+  /* Styling for table cells */
+  p-table td,
+  p-table th {
+    text-align: center; /* Center-align text in cells */
+    padding: 10px;
+  }
+  
+  /* Styling for editable cell inputs */
+  p-cellEditor input[type="text"],
+  p-cellEditor p-dropdown,
+  p-cellEditor p-calendar {
+    width: 100%; /* Full width input fields in editable cells */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+  }
+  
+  /* Styling for action buttons in table cells */
+  .flex {
+    display: flex;
+  }
+  
+  .align-items-center {
+    align-items: center;
+  }
+  
+  .justify-content-center {
+    justify-content: center;
+  }
+  
+  .gap-2 {
+    gap: 2px; /* Adjust gap between buttons */
+  }
+  
+  /* Button styles */
+  button.p-button-rounded {
+    margin-right: 5px; /* Adjust margin between buttons */
+  }
+  

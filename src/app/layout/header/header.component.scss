@@ -12,6 +12,20 @@
 
     &.active {
       font-weight: 900;
+
+      i {
+        color: var(--active-color); /* Change icon color when active */
+      }
+    }
+
+    i {
+      font-size: 1.5rem; /* Adjust the size of the icons */
+      margin-right: 0.5rem; /* Spacing between icon and text */
+      transition: color 0.3s ease; /* Smooth color transition */
+    }
+
+    &:hover i {
+      color: blue;
     }
   }
 
@@ -21,6 +35,4 @@
     height: 2rem;
     margin-right: auto;
   }
-
-
 }
